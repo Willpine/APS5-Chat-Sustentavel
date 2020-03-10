@@ -14,11 +14,15 @@ const router = require('./router');
 // Inicializa o Servidor
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server)// Instância de socket.io
+// Instância de socket do server. Esse socket funcionará como um listener
+// para o server, recebendo e enviando comandos como 'connection', 'join',
+// 'enviaMensagem', 'disconnect', 'mensagem', etc. Toda vez que em algum
+// lugar um socket emitir um comando, ele será escutado por essas
+// implementações.
+const io = socketio(server)
 
-// O método io.connection refere-se ao socket do client
-// dentro dele, dizemos para ele imprimir que foi conectado logo de cara,
-// e quando esse socket se desconectar, imprimir que se desconectou.
+// Quando o server receber a mensagem 'connection' ele irá instanciar
+// cada um desses socket listeners.
 io.on('connection', (socket) => {
     // Callback será usado para tratamento de erros. o primeiro parâmetro
     // são parâmetros, enquanto o segundo é basicamente uma função que

@@ -2,7 +2,8 @@
 const express = require('express');
 const router = express.Router();
 
-// O que o servidor faz quando, na página /, houver um GET request.
+// Essa mensagem é mostrada toda vez que vamos para a página DO SERVIDOR
+// Se ela aparecer, o servidor está em execução.
 router.get('/', (request, response) => {
     response.send('servidor executando...');
 });
