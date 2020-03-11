@@ -21,6 +21,7 @@ let socket;
 const Chat = ({ location }) => {
     const [nome, setNome] = useState('');
     const [sala, setSala] = useState('');
+    const [users, setUsers] = useState('');
     const [mensagem, setMensagem] = useState('');
     const [mensagens, setMensagens] = useState([]);
     const ENDPOINT = 'localhost:5000';
@@ -34,7 +35,7 @@ const Chat = ({ location }) => {
 
         setNome(nome);
         setSala(sala);
-
+        
         // Isso emite um evento a partir do socket do client
         // podemos passar dados também, como objetos. Nesse caso
         // emitiremos o evento join e nossos parâmetros.
@@ -50,10 +51,16 @@ const Chat = ({ location }) => {
         }
     } , [ENDPOINT, location.search]);
 
-    useEffect( () => {
+    useEffect( () => { // Toda vez que mensagens mudar
         socket.on('mensagem', (mensagem) => {
             setMensagens([...mensagens, mensagem]);
-        })
+        }); console.log(mensagens)
+
+        return () => {
+            socket.emit('disconnect');
+      
+            socket.off();
+          }
     }, [mensagens]);
 
     // TODO Função de mandar mensagens

@@ -35,8 +35,8 @@ io.on('connection', (socket) => {
         if(erro) return callback(erro);
 
         // Quando o usuário entrar, essa mensagem será disparada.
-        socket.emit('mensagem', {user: 'admin', 
-            texto: `${user.nome}, bem vindo a sala ${user.sala}.`});
+        /*socket.emit('mensagem', {user: 'admin', 
+            texto: `${user.nome}, bem vindo a sala ${user.sala}.`});*/
         // broadcast manda uma mensagem pra todo mundo exceto aquele
         // usuário específico.
         socket.broadcast.to(user.sala).emit('mensagem', { user: 'admin',
@@ -55,8 +55,6 @@ io.on('connection', (socket) => {
         const user = getUser(socket.id);
 
         io.to(user.sala).emit('mensagem', { user: user.nome, texto: mensagem});
-
-        io.to(user.sala).emit('infoSala', { sala: user.sala, users: getUsersSala(user.sala )});
 
         callback();
     });
