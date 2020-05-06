@@ -2,6 +2,7 @@
 const express = require('express');
 const socketio = require('socket.io'); // Gerencia nossos WebSockets
 const http = require('http'); // Gerencia as requests Http
+const cors = require('cors');
 
 const { addUser, removeUser, getUser, getUsersSala } = require('./users');
 
@@ -20,6 +21,9 @@ const server = http.createServer(app);
 // lugar um socket emitir um comando, ele será escutado por essas
 // implementações.
 const io = socketio(server)
+
+app.use(router);
+app.use(cors());// cors cross-origin-resource-sharing
 
 // Quando o server receber a mensagem 'connection' ele irá instanciar
 // cada um desses socket listeners.
