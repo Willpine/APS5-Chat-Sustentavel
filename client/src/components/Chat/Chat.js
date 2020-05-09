@@ -21,9 +21,9 @@ let socket;
 const Chat = ({ location }) => {
     const [nome, setNome] = useState('');
     const [sala, setSala] = useState('');
-    const [users, setUsers] = useState('');
     const [mensagem, setMensagem] = useState('');
     const [mensagens, setMensagens] = useState([]);
+    const [arquivo, setArquivo] = useState({});
     const ENDPOINT = 'localhost:5000';
 
     useEffect ( () => {
@@ -49,30 +49,36 @@ const Chat = ({ location }) => {
 
             socket.disconnect();
         }
-    } , [ENDPOINT, location.search]);
+    } , [ENDPOINT, location.search]);// Se o endpoint ou a url mudarem esse Effect será ativado.
 
     useEffect( () => { // Toda vez que mensagens mudar
         socket.on('mensagem', (mensagem) => {
+            
             setMensagens([...mensagens, mensagem]);
-        }); console.log(mensagens)
+        });
 
         return () => {
             socket.emit('disconnect');
       
             socket.off();
           }
-    }, [mensagens]);
+    }, [mensagens]);//Esse parâmetro indica que o useEffect
+    //apenas será ativado se o array mensagens mudar.
 
     // TODO Função de mandar mensagens
     const enviaMensagem = (event) => {
         event.preventDefault();
-
         if(mensagem){
         socket.emit('enviaMensagem', mensagem, () => setMensagem(''));
         }
     }
 
-    //console.log(mensagem, mensagens);
+    const enviaArquivo = (event) => {
+
+        event.preventDefault();
+        if(arquivo)
+            socket.emit('enviaArquivo', arquivo, () => setArquivo(''));
+    }
 
     return (
         <div className="outerContainer">
@@ -81,8 +87,19 @@ const Chat = ({ location }) => {
                 <Mensagens mensagens={mensagens} nome={nome}/>
                 <Input mensagem={mensagem} setMensagem={setMensagem}
                     enviaMensagem={enviaMensagem}/>
+
+                
             </div>
+            <button 
+                onClick={(event) => enviaArquivo(event)}
+                styles={{float:'left'}}
+                >Upload</button>
+                
+                <input type="file" 
+                onChange={(event) => {setArquivo(event.target.files[0]);}}
+                styles={{float:'left'}}/>
         </div>
+        
     )
 }
 
