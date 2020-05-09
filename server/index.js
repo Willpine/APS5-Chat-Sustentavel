@@ -12,7 +12,7 @@ const { addUser, removeUser, getUser, getUsersSala } = require('./users');
 // Deploy, usaremos a porta localizada em process.env.PORT
 const PORT = process.env.PORT || 5000
 
-const router = require('./router');git 
+const router = require('./router');
 
 // Inicializa o Servidor
 const app = express();
