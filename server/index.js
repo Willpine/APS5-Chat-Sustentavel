@@ -1,8 +1,10 @@
-// Essas declarações são como imports, mas para NodeJS
+gi// Essas declarações são como imports, mas para NodeJS
 const express = require('express');
 const socketio = require('socket.io'); // Gerencia nossos WebSockets
 const http = require('http'); // Gerencia as requests Http
 const cors = require('cors');
+
+//comentário de teste
 
 const { addUser, removeUser, getUser, getUsersSala } = require('./users');
 
@@ -10,7 +12,7 @@ const { addUser, removeUser, getUser, getUsersSala } = require('./users');
 // Deploy, usaremos a porta localizada em process.env.PORT
 const PORT = process.env.PORT || 5000
 
-const router = require('./router');
+const router = require('./router');git 
 
 // Inicializa o Servidor
 const app = express();
