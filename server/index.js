@@ -1,4 +1,4 @@
-gi// Essas declarações são como imports, mas para NodeJS
+// Essas declarações são como imports, mas para NodeJS
 const express = require('express');
 const socketio = require('socket.io'); // Gerencia nossos WebSockets
 const http = require('http'); // Gerencia as requests Http
