@@ -3,7 +3,7 @@
     border-radius: 20px;
     padding: 5px 20px;
     color: white;
-    display: inline-block;
+    display: flex;
     max-width: 80%;
   }
   
@@ -22,7 +22,7 @@
   .containerMensagem {
     display: flex;
     justify-content: flex-end;
-    padding: 0 5%;
+    padding: 0 2%;
     margin-top: 3px;
   }
   
@@ -33,7 +33,13 @@
     color: #828282;
     letter-spacing: 0.3px;
   }
-  
+  .hora{
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-size: 12px;
+    opacity: 80%; 
+  }
   .pl-10 {
     padding-left: 10px;
   }
@@ -63,5 +69,5 @@
   }
   
   .backgroundLight {
-    background: #F3F3F3;
+    background: #dbdbdb;
   }
