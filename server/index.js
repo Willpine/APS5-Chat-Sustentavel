@@ -51,8 +51,6 @@ io.on('connection', (socket) => {
         // Se não, um usuário é inserido na sala
         socket.join(user.sala);
 
-        io.to(user.sala).emit('infoSala', {sala: user.sala, users: getUsersSala(user.sala)});
-
         callback();
 
     });
@@ -63,6 +61,12 @@ io.on('connection', (socket) => {
         io.to(user.sala).emit('mensagem', { user: user.nome, texto: mensagem});
 
         callback();
+    });
+
+    socket.on('getUsersSala', () => {
+        const user = getUser(socket.id);
+        const users = getUsersSala(user.sala);
+        io.to(user.sala).emit('setUsersSala', users);
     });
 
     socket.on('disconnect', () => {
