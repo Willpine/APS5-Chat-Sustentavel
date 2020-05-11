@@ -41,6 +41,7 @@ const Chat = ({ location }) => {
         socket.emit('join', { nome, sala }, () => {
 
         });
+        socket.emit('getUsersSala');
 
         // O return serve pra fazer o unmount da função
         return () => {
@@ -63,7 +64,8 @@ const Chat = ({ location }) => {
 
     useEffect( () => {
         socket.on('setUsersSala', (usersSala) => {
-            console.log(usersSala)
+            console.log(usersSala);
+            setUsers(usersSala);
         });
 
         return () => {
@@ -75,9 +77,6 @@ const Chat = ({ location }) => {
     // TODO Função de mandar mensagens
     const enviaMensagem = (event) => {
         event.preventDefault();
-
-        socket.emit('getUsersSala');
-
         if(mensagem){
         socket.emit('enviaMensagem', mensagem, () => setMensagem(''));
         }

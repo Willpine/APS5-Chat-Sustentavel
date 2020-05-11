@@ -71,7 +71,8 @@ io.on('connection', (socket) => {
 
     socket.on('disconnect', () => {
         const user = removeUser(socket.id);
-
+        const users = getUsersSala(user.sala);
+        io.to(user.sala).emit('setUsersSala', users);
         if(user)
         io.to(user.room).emit('mensagem', {user:'admin', texto:`${user.name} saiu da sala`})
     });
