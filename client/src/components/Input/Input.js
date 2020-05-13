@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Input.css';
 
-const Input = ({mensagem, setMensagem, enviaMensagem}) => (
+const Input = ({mensagem, setMensagem, enviaMensagem, enviaArquivo, defineArquivo, limpaArquivo }) => (
     <form className="form">
         <input
             className="input"
@@ -14,14 +14,14 @@ const Input = ({mensagem, setMensagem, enviaMensagem}) => (
                     event.key === 'Enter' ? enviaMensagem(event) : null}
         />
 
-        <input type="file" id="attach"  className="botaoInvisivel" onChange={(event) => defineArquivo(event.target.files[0], temArquivo)}/>
+        <input type="file" id="attach"  className="botaoInvisivel" onChange={(event) => defineArquivo(event.target.files[0])}/>
         <label htmlFor="attach"  className="attachButton">+</label>
         <button className="sendButton" onClick={(event) => {
             event.preventDefault();
-            enviar(event)
+            enviaMensagem(event)
         }}>Enviar</button>
 
-        
+
     </form>
 )
 

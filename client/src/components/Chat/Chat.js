@@ -80,17 +80,17 @@ const Chat = ({ location }) => {
             socket.emit('enviaArquivo', arquivo, () => setArquivo(''));
     }
 
-    const defineArquivo = (imagem, temArquivo)=>{
+    const defineArquivo = (imagem)=>{
         setArquivo(imagem);
-        temArquivo = true;
+        //temArquivo = true;
         
 
     }
 
 
-    const limpaArquivo = (temArquivo) => {
+    const limpaArquivo = () => {
 
-        temArquivo = false;
+       //temArquivo = false;
         setMensagem('');        
         setArquivo('');
     }
@@ -102,7 +102,8 @@ const Chat = ({ location }) => {
                 <InfoBar sala={sala}/>
                 <Mensagens mensagens={mensagens} nome={nome}/>
                 <Input mensagem={mensagem} setMensagem={setMensagem}
-                    enviaMensagem={enviaMensagem}/>
+                    enviaMensagem={enviaMensagem} enviaArquivo={enviaArquivo} defineArquivo={defineArquivo}     
+                    limpaArquivo={limpaArquivo}/>
 
                 
             </div>
