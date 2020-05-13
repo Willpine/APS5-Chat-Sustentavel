@@ -24,6 +24,7 @@ const Chat = ({ location }) => {
     const [users, setUsers] = useState([]);
     const [mensagem, setMensagem] = useState('');
     const [mensagens, setMensagens] = useState([]);
+    const [arquivo, setArquivo] = useState({});
     const ENDPOINT = 'localhost:5000';
 
     useEffect ( () => {
@@ -49,10 +50,11 @@ const Chat = ({ location }) => {
 
             socket.disconnect();
         }
-    } , [ENDPOINT, location.search]);
+    } , [ENDPOINT, location.search]);// Se o endpoint ou a url mudarem esse Effect será ativado.
 
     useEffect( () => { 
         socket.on('mensagem', (mensagem) => {
+            
             setMensagens([...mensagens, mensagem]);
         });
 
@@ -72,7 +74,8 @@ const Chat = ({ location }) => {
             socket.emit('disconnect');
             socket.off();
           }
-    }, [mensagens]);
+    }, [mensagens]);//Esse parâmetro indica que o useEffect
+    //apenas será ativado se o array mensagens mudar.
 
     // TODO Função de mandar mensagens
     const enviaMensagem = (event) => {
@@ -82,15 +85,32 @@ const Chat = ({ location }) => {
         }
     }
 
+    const enviaArquivo = (event) => {
+        event.preventDefault();
+        setMensagem('')
+        if(arquivo)
+            socket.emit('enviaArquivo', arquivo, () => setArquivo(''));
+    }
+
+     const limpaArquivo = () => {      
+        setMensagem('');        
+        setArquivo('');
+    }    
+     
     return (
         <div className="outerContainer">
             <div className="container">
                 <InfoBar sala={sala}/>
                 <Mensagens mensagens={mensagens} nome={nome}/>
                 <Input mensagem={mensagem} setMensagem={setMensagem}
-                    enviaMensagem={enviaMensagem}/>
+                    enviaMensagem={enviaMensagem} enviaArquivo={enviaArquivo} setArquivo={setArquivo}     
+                    limpaArquivo={limpaArquivo} arquivo={arquivo}/>
+
+                
             </div>
+            
         </div>
+        
     )
 }
 
