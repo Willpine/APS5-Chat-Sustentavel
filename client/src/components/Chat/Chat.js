@@ -75,6 +75,7 @@ const Chat = ({ location }) => {
 
     const enviaArquivo = (event) => {
         event.preventDefault();
+        setMensagem('')
         if(arquivo)
             socket.emit('enviaArquivo', arquivo, () => setArquivo(''));
     }
