@@ -47,15 +47,17 @@ const Mensagem = ({ mensagem: { user, texto, imagem }, nome }) => {
                 <div className="containerMensagem justifyEnd">
                     <p className="textoEnviado pr-10">{nomeFormatado}</p>
                     <div className="mensagemRetangulo backgroundBlue">
-                    <Link to={imagemUrl}>
+                    <a href={imagemUrl} download="imagem">
                     <img src={imagemUrl} id="output" width="200" />
-                    </Link>
+                    </a>
                     </div>
                 </div>
             ) : (
                     <div className="containerMensagem justifyStart">
                         <div className="mensagemRetangulo backgroundLight">
+                        <a href={imagemUrl} download="imagem">
                         <img src={imagemUrl} id="output" width="200" />	
+                        </a>
                         </div>
                         <p className="textoEnviado pl-10">{user}</p>
                     </div>
