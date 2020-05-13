@@ -74,26 +74,21 @@ const Chat = ({ location }) => {
     }
 
     const enviaArquivo = (event) => {
-
         event.preventDefault();
         if(arquivo)
             socket.emit('enviaArquivo', arquivo, () => setArquivo(''));
     }
 
-    const defineArquivo = (imagem)=>{
-        setArquivo(imagem);
-        //temArquivo = true;
-        
-
-    }
-
-
-    const limpaArquivo = () => {
-
-       //temArquivo = false;
+     const limpaArquivo = () => {      
         setMensagem('');        
         setArquivo('');
-    }
+    }    
+     
+        
+
+
+
+   
 
 
     return (
@@ -102,19 +97,12 @@ const Chat = ({ location }) => {
                 <InfoBar sala={sala}/>
                 <Mensagens mensagens={mensagens} nome={nome}/>
                 <Input mensagem={mensagem} setMensagem={setMensagem}
-                    enviaMensagem={enviaMensagem} enviaArquivo={enviaArquivo} defineArquivo={defineArquivo}     
-                    limpaArquivo={limpaArquivo}/>
+                    enviaMensagem={enviaMensagem} enviaArquivo={enviaArquivo} setArquivo={setArquivo}     
+                    limpaArquivo={limpaArquivo} arquivo={arquivo}/>
 
                 
             </div>
-            <button 
-                onClick={(event) => enviaArquivo(event)}
-                styles={{float:'left'}}
-                >Upload</button>
-                
-                <input type="file" 
-                onChange={(event) => {setArquivo(event.target.files[0]);}}
-                styles={{float:'left'}}/>
+            
         </div>
         
     )
