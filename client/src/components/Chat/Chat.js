@@ -80,6 +80,22 @@ const Chat = ({ location }) => {
             socket.emit('enviaArquivo', arquivo, () => setArquivo(''));
     }
 
+    const defineArquivo = (imagem, temArquivo)=>{
+        setArquivo(imagem);
+        temArquivo = true;
+        
+
+    }
+
+
+    const limpaArquivo = (temArquivo) => {
+
+        temArquivo = false;
+        setMensagem('');        
+        setArquivo('');
+    }
+
+
     return (
         <div className="outerContainer">
             <div className="container">

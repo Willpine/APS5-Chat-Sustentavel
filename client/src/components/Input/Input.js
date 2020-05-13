@@ -13,7 +13,15 @@ const Input = ({mensagem, setMensagem, enviaMensagem}) => (
             onKeyPress={event => 
                     event.key === 'Enter' ? enviaMensagem(event) : null}
         />
-        <button className="sendButton" onClick={(event) => enviaMensagem(event)}>Enviar</button>
+
+        <input type="file" id="attach"  className="botaoInvisivel" onChange={(event) => defineArquivo(event.target.files[0], temArquivo)}/>
+        <label htmlFor="attach"  className="attachButton">+</label>
+        <button className="sendButton" onClick={(event) => {
+            event.preventDefault();
+            enviar(event)
+        }}>Enviar</button>
+
+        
     </form>
 )
 
