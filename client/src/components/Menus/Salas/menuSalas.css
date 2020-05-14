@@ -1,0 +1,38 @@
+input[name="menuSalas"]:checked ~ .menuEsq{
+    width: 150px;
+}
+input[name="menuSalas"]:checked ~ .menuEsq > ul > li > a{
+    opacity: 100%;
+}
+.menuEsq{
+    z-index: 1;
+    background-color: rgba(41, 121, 255, .8);
+    width: 0px;
+    height: 85%;
+    position: absolute;
+    display: flex;
+    text-align: center;
+    top: 60px;
+    transition: all .2s;
+}
+.menuEsq > ul > li > a{
+    color: white;
+    padding: 5% 10%;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    opacity: 0;
+    transition: all 0.3s;
+}
+.menuEsq > ul > li > a:hover{
+    background-color: #2979FF;
+    transition: 0.2s;
+}
+ul{
+    position: absolute;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+    width: 100%;
+}

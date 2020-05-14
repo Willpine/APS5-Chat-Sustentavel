@@ -1,4 +1,4 @@
-// Os hooks sempre ficam dentro de chaves e o useEffect
+// // Os hooks sempre ficam dentro de chaves e o useEffect
 // nos permite usar métodos lifecycle.
 import React, { useState, useEffect } from "react";
 
@@ -10,7 +10,8 @@ import io from 'socket.io-client';
 import Mensagens from '../Mensagens/Mensagens';
 import InfoBar from '../InfoBar/InfoBar';
 import Input from '../Input/Input';
-
+import MenuSalas from '../Menus/Salas/menuSalas';
+import MenuUsers from '../Menus/Users/menuUsers';
 import './Chat.css';
 
 let socket;
@@ -78,6 +79,8 @@ const Chat = ({ location }) => {
         <div className="outerContainer">
             <div className="container">
                 <InfoBar sala={sala}/>
+                <MenuSalas/>
+                <MenuUsers/>
                 <Mensagens mensagens={mensagens} nome={nome}/>
                 <Input mensagem={mensagem} setMensagem={setMensagem}
                     enviaMensagem={enviaMensagem}/>

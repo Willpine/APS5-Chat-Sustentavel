@@ -1,0 +1,41 @@
+input[type="checkbox"]{
+    z-index: 1;
+    display: none;
+}
+input[name="menuUsers"]:checked ~ .menuDir{
+    width: 150px;
+    right:0;
+}
+input[name="menuUsers"]:checked ~ .menuDir > ul > li > a{
+    opacity: 100%;
+    transform: translateX(0px);
+}
+.menuDir{
+    z-index: 1;
+    right: 0;
+    background-color: #2979FF;
+    width: -0px;
+    height: 85%;
+    position: absolute;
+    text-align: center;
+    top: 60px;
+    transition: all .2s;
+    user-select: none;
+}
+.menuDir > ul > li > a{
+    color: white;
+    padding: 5% 10%;
+    text-decoration: none;
+    width: 100%;
+    display: flex;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.1s;
+}
+ul{
+    position: absolute;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+    width: 100%;
+}
