@@ -117,4 +117,4 @@ const Chat = ({ location }) => {
     )
 }
 
-export default Chat; testeaa
+export default Chat;
