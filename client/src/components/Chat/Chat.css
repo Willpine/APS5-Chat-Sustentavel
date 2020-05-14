@@ -11,10 +11,17 @@
     justify-content: space-between;
     background: #FFFFFF;
     border-radius: 8px;
+<<<<<<< HEAD
     height: 70%;
     width: 40%;
     position: relative;
 }
+=======
+    height: 100%;
+    width: 60%;
+  }
+  
+>>>>>>> origin/develop
   @media (min-width: 320px) and (max-width: 480px) {
     .outerContainer {
       height: 100%;

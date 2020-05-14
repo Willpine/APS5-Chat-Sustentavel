@@ -41,8 +41,6 @@ io.on('connection', (socket) => {
         if(erro) return callback(erro);
 
         // Quando o usuário entrar, essa mensagem será disparada.
-        /*socket.emit('mensagem', {user: 'admin', 
-            texto: `${user.nome}, bem vindo a sala ${user.sala}.`});*/
         // broadcast manda uma mensagem pra todo mundo exceto aquele
         // usuário específico.
         socket.broadcast.to(user.sala).emit('mensagem', { user: 'admin',
@@ -51,23 +49,34 @@ io.on('connection', (socket) => {
         // Se não, um usuário é inserido na sala
         socket.join(user.sala);
 
-        io.to(user.sala).emit('infoSala', {sala: user.sala, users: getUsersSala(user.sala)});
-
         callback();
 
     });
 
     socket.on('enviaMensagem', (mensagem, callback) => {
         const user = getUser(socket.id);
-
         io.to(user.sala).emit('mensagem', { user: user.nome, texto: mensagem});
 
         callback();
     });
 
+    socket.on('getUsersSala', () => {
+        const user = getUser(socket.id);
+        const users = getUsersSala(user.sala);
+        io.to(user.sala).emit('setUsersSala', users);
+    });
+    socket.on('enviaArquivo', (arquivo, callback) => {
+        const user = getUser(socket.id);
+        
+        io.to(user.sala).emit('mensagem', {user: user.nome, imagem: arquivo});
+
+        callback();
+    })
+
     socket.on('disconnect', () => {
         const user = removeUser(socket.id);
-
+        const users = getUsersSala(user.sala);
+        io.to(user.sala).emit('setUsersSala', users);
         if(user)
         io.to(user.room).emit('mensagem', {user:'admin', texto:`${user.name} saiu da sala`})
     });

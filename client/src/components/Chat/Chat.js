@@ -22,9 +22,10 @@ let socket;
 const Chat = ({ location }) => {
     const [nome, setNome] = useState('');
     const [sala, setSala] = useState('');
-    const [users, setUsers] = useState('');
+    const [users, setUsers] = useState([]);
     const [mensagem, setMensagem] = useState('');
     const [mensagens, setMensagens] = useState([]);
+    const [arquivo, setArquivo] = useState({});
     const ENDPOINT = 'localhost:5000';
 
     useEffect ( () => {
@@ -36,13 +37,13 @@ const Chat = ({ location }) => {
 
         setNome(nome);
         setSala(sala);
-        
         // Isso emite um evento a partir do socket do client
         // podemos passar dados também, como objetos. Nesse caso
         // emitiremos o evento join e nossos parâmetros.
         socket.emit('join', { nome, sala }, () => {
 
         });
+        socket.emit('getUsersSala');
 
         // O return serve pra fazer o unmount da função
         return () => {
@@ -50,31 +51,53 @@ const Chat = ({ location }) => {
 
             socket.disconnect();
         }
-    } , [ENDPOINT, location.search]);
+    } , [ENDPOINT, location.search]);// Se o endpoint ou a url mudarem esse Effect será ativado.
 
-    useEffect( () => { // Toda vez que mensagens mudar
+    useEffect( () => { 
         socket.on('mensagem', (mensagem) => {
+            
             setMensagens([...mensagens, mensagem]);
-        }); console.log(mensagens)
+        });
 
         return () => {
             socket.emit('disconnect');
-      
             socket.off();
           }
     }, [mensagens]);
 
+    useEffect( () => {
+        socket.on('setUsersSala', (usersSala) => {
+            console.log(usersSala);
+            setUsers(usersSala);
+        });
+
+        return () => {
+            socket.emit('disconnect');
+            socket.off();
+          }
+    }, [mensagens]);//Esse parâmetro indica que o useEffect
+    //apenas será ativado se o array mensagens mudar.
+
     // TODO Função de mandar mensagens
     const enviaMensagem = (event) => {
         event.preventDefault();
-
         if(mensagem){
         socket.emit('enviaMensagem', mensagem, () => setMensagem(''));
         }
     }
 
-    //console.log(mensagem, mensagens);
+    const enviaArquivo = (event) => {
+        event.preventDefault();
+        setMensagem('')
+        if(arquivo)
+            socket.emit('enviaArquivo', arquivo, () => setArquivo(''));
+    }
 
+     const limpaArquivo = () => {      
+        setMensagem('');        
+        setArquivo('');
+    }    
+     
     return (
         <div className="outerContainer">
             <div className="container">
@@ -83,9 +106,14 @@ const Chat = ({ location }) => {
                 <MenuUsers/>
                 <Mensagens mensagens={mensagens} nome={nome}/>
                 <Input mensagem={mensagem} setMensagem={setMensagem}
-                    enviaMensagem={enviaMensagem}/>
+                    enviaMensagem={enviaMensagem} enviaArquivo={enviaArquivo} setArquivo={setArquivo}     
+                    limpaArquivo={limpaArquivo} arquivo={arquivo}/>
+
+                
             </div>
+            
         </div>
+        
     )
 }
 
