@@ -10,14 +10,14 @@ import './InfoBar.css';
 const InfoBar = ({ sala }) => (
     <div className="infoBar">
         <div className="leftInnerContainer">
-            <label for="menuSalas" className="menuSalas">
+            <label htmlFor="menuSalas" className="menuSalas">
                 <img src={iconSalas}></img>
             </label>
             <img className="onlineIcon" src={onlineIcon} alt="ícone online"/>
             <h3>{sala}</h3>
         </div>
         <div className="rightInnerContainer">
-            <label for="menuUsers" className="menuUsers">
+            <label htmlFor="menuUsers" className="menuUsers">
                 <img src={iconUsers}></img>
             </label>
             <a href="/">

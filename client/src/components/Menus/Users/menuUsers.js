@@ -1,13 +1,12 @@
 import React from 'react';
 import './menuUsers.css'
 
-const MenuUsers = ({b}) =>(
+const MenuUsers = ({users}) =>(
     <div>
     <input type="checkbox" id="menuUsers" name="menuUsers"></input>
     <nav className="menuDir">
         <ul>
-            <li><a>User1</a></li>
-            <li><a>User2</a></li>
+        {users.map((user, i) => <li key={i}>{user.nome}</li>)}
         </ul>
     </nav>
     </div>

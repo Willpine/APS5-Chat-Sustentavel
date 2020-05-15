@@ -103,7 +103,7 @@ const Chat = ({ location }) => {
             <div className="container">
                 <InfoBar sala={sala}/>
                 <MenuSalas/>
-                <MenuUsers/>
+                <MenuUsers users={users}/>
                 <Mensagens mensagens={mensagens} nome={nome}/>
                 <Input mensagem={mensagem} setMensagem={setMensagem}
                     enviaMensagem={enviaMensagem} enviaArquivo={enviaArquivo} setArquivo={setArquivo}     

@@ -6,7 +6,7 @@ input[name="menuUsers"]:checked ~ .menuDir{
     width: 150px;
     right:0;
 }
-input[name="menuUsers"]:checked ~ .menuDir > ul > li > a{
+input[name="menuUsers"]:checked ~ .menuDir > ul > li {
     opacity: 100%;
     transform: translateX(0px);
 }
@@ -22,7 +22,7 @@ input[name="menuUsers"]:checked ~ .menuDir > ul > li > a{
     transition: all .2s;
     user-select: none;
 }
-.menuDir > ul > li > a{
+.menuDir > ul > li {
     color: white;
     padding: 5% 10%;
     text-decoration: none;
