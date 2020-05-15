@@ -1,8 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import './Mensagem.css';
-
 
 import ReactEmoji from 'react-emoji';
 let data = new Date();
@@ -55,7 +53,7 @@ const Mensagem = ({ mensagem: { user, texto, imagem }, nome }) => {
                     <p className="textoEnviado pr-10">{nomeFormatado}</p>
                     <div className="mensagemRetangulo backgroundBlue">
                     <a href={imagemUrl} download="imagem">
-                    <img src={imagemUrl} id="output" width="200" />
+                    <img src={imagemUrl} id="output" width="200" alt="mensagem imagem"/>
                     </a>
                     </div>
                 </div>
@@ -63,7 +61,7 @@ const Mensagem = ({ mensagem: { user, texto, imagem }, nome }) => {
                     <div className="containerMensagem justifyStart">
                         <div className="mensagemRetangulo backgroundLight">
                         <a href={imagemUrl} download="imagem">
-                        <img src={imagemUrl} id="output" width="200" />	
+                        <img src={imagemUrl} id="output" width="200" alt="mensagem imagem"/>	
                         </a>
                         </div>
                         <p className="textoEnviado pl-10">{user}</p>

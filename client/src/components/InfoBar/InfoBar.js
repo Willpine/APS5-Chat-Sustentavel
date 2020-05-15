@@ -11,14 +11,14 @@ const InfoBar = ({ sala }) => (
     <div className="infoBar">
         <div className="leftInnerContainer">
             <label htmlFor="menuSalas" className="menuSalas">
-                <img src={iconSalas}></img>
+                <img src={iconSalas} alt="ícone salas"></img>
             </label>
             <img className="onlineIcon" src={onlineIcon} alt="ícone online"/>
             <h3>{sala}</h3>
         </div>
         <div className="rightInnerContainer">
             <label htmlFor="menuUsers" className="menuUsers">
-                <img src={iconUsers}></img>
+                <img src={iconUsers} alt="ícone users"></img>
             </label>
             <a href="/">
                 <img src={closeIcon} alt="ícone fechar"/>

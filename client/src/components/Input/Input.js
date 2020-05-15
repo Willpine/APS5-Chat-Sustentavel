@@ -20,7 +20,7 @@ const Input = ({mensagem, setMensagem, enviaMensagem, enviaArquivo, setArquivo, 
         <label htmlFor="attach"  className="attachButton">+</label>
         <button className="sendButton" onClick={(event) => {
             event.preventDefault();
-            arquivo.name != undefined ? enviaArquivo(event) : enviaMensagem(event)
+            arquivo.name !== undefined ? enviaArquivo(event) : enviaMensagem(event)
         }}>Enviar</button>
 
 
