@@ -12,11 +12,8 @@ const Join = () => {
     // um valor inicial para aquela variável, nesse caso, nome, o valor
     // inicial é um string vazio.
     const [nome, setNome] = useState('');
-    const [nomeCad, setNomeCad] = useState('');
     // TODO : mudar para público ao fim do tutorial.
     const [sala, setSala] = useState('');
-    const [senha, setSenha] = useState('');
-    const [confirmaSenha, setConfirmaSenha] = useState('');
 
     // <Link onClick={event => (!nome || !sala) ? event.preventDefault() : null}
     //             to={`/Chat?nome=${nome}&sala=${sala}`}>
@@ -66,24 +63,6 @@ const Join = () => {
                 <button className="roombutton mt-20" type="submit">Sala 6</button>
                 </Link>
                 </div>
-                </div>
-
-                <div style={{}}>
-                    <h1 className="heading">Sem cadastro?</h1>
-                    <div>
-                        <input placeholder="Nome" className="joinInput"
-                        type="text" onChange={(event) => setNomeCad(event.target.value)} />
-                    </div>
-                    <div>
-                        <input placeholder="Senha" className="joinInput mt-20"
-                        type="text" onChange={(event) => setSenha(event.target.value)} />
-                        <input placeholder="Confirme a senha" className="joinInput mt-20"
-                        type="text" onChange={(event) => setConfirmaSenha(event.target.value)} />
-                        </div>
-                    <Link onClick={event => (!nomeCad || !confirmaSenha || !senha || senha !== confirmaSenha) ? event.preventDefault() : null}
-                    to={`/Chat?nome=${nome}&sala=${sala}`}>
-                        <button className="button mt-20" type="submit">Cadastrar</button>
-                    </Link>
                 </div>
 
             </div>
