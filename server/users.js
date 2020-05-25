@@ -29,6 +29,6 @@ const removeUser = (id) => {
 
 const getUser = (id) => users.find((user) => user.id === id);
 
-const getUsersSala = (sala) => users.filter((user) => user.sala = sala);
+const getUsersSala = (sala) => users.filter((user) => user.sala === sala);
 
 module.exports = { addUser, removeUser, getUser, getUsersSala};

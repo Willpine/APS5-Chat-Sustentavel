@@ -11,9 +11,6 @@ const Init = () => {
                     <Link to={`/Join`}>
                     <button className="button mt-20" type="submit">Entre</button>
                     </Link>
-                    <Link to={`/Cadastro`}>
-                    <button className="button mt-20" type="submit">Cadastre-se</button>
-                    </Link>
                 </div>
             </div>
         </div>
