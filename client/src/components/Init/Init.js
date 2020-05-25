@@ -7,7 +7,7 @@ const Init = () => {
         <div className="InitOuterContainer">
             <div className="InitInnerContainer">
                 <div>
-                    <h1 className="heading">Chat Sustentável</h1>
+                    <h1 className="heading">Solstício</h1>
                     <Link to={`/Join`}>
                     <button className="button mt-20" type="submit">Entre</button>
                     </Link>

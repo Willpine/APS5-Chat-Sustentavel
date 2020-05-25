@@ -8,11 +8,11 @@ const MenuSalas = ({nome,sala}) =>(
     <nav className="menuEsq">
         <ul>
                 
-        <li><Link to={`/Chat?nome=${nome}&sala=Auditório`}>Auditório</Link></li>
+        <li><a href={`/Chat?nome=${nome}&sala=Auditório`}>Auditório</a></li>
             
-        <li><Link to={`/Chat?nome=${nome}&sala=Planetário`}>Planetário</Link></li>
+        <li><a href={`/Chat?nome=${nome}&sala=Planetário`}>Planetário</a></li>
 
-        <li><Link to={`/Chat?nome=${nome}&sala=Portões`}>Portões</Link></li>
+        <li><a href={`/Chat?nome=${nome}&sala=Portões`}>Portões</a></li>
         
 
         </ul>
