@@ -18,7 +18,7 @@ html, body {
     text-align: center;
     height: 100vh;
     align-items: center;
-    background-color: #1A1A1D;
+    background-image: url('fundochat.png');
   }
   
   .joinInnerContainer {
@@ -33,8 +33,8 @@ html, body {
   
   .heading {
     color: white;
-    font-size: 2.5em;
-    padding-bottom: 10px;
+    font-size: 1.8em;
+    padding-bottom: 8px;
     border-bottom: 2px solid white;
   }
   
@@ -49,9 +49,21 @@ html, body {
       border: none;
       width: 100%;
   }
+
+  .roombutton {
+    color: #fff !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #2979FF;
+    padding: 20px;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    margin: 2px;
+}
   
   .mt-20 {
-    margin-top: 20px;
+    margin-top: 15px;
   }
   
   @media (min-width: 320px) and (max-width: 480px) {

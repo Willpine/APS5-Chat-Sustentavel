@@ -1,4 +1,23 @@
 // Aqui vão ter funções utilitárias para se gerenciar usuários.
+
+const mysql = require('mysql');
+
+const con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "SOU@esperto10",
+    database: "chatambiental"
+  });
+
+  con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+  });
+
+//   con.query("SELECT * FROM USUARIO", function (err, result, fields) {
+//     if (err) throw err;
+//     console.log(result);})
+
 const users = [];
 
 const addUser = ({ id, nome, sala }) => {

@@ -4,6 +4,7 @@ const socketio = require('socket.io'); // Gerencia nossos WebSockets
 const http = require('http'); // Gerencia as requests Http
 const cors = require('cors');
 
+
 //comentário de teste
 
 const { addUser, removeUser, getUser, getUsersSala } = require('./users');

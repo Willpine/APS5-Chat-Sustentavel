@@ -26,7 +26,7 @@ const Chat = ({ location }) => {
     const [mensagem, setMensagem] = useState('');
     const [mensagens, setMensagens] = useState([]);
     const [arquivo, setArquivo] = useState({});
-    const ENDPOINT = 'localhost:5000';
+    const ENDPOINT = 'https://chat-ambiental-aps5.herokuapp.com/';
 
     useEffect ( () => {
         const {nome, sala} = queryString.parse(location.search);
