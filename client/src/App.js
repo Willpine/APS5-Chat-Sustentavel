@@ -3,6 +3,8 @@ import React from 'react';
 // Permite a definição de rotas e o que será feito nelas
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
+import Init from './components/Init/Init';
+import Cadastro from './components/Cadastro/Cadastro';
 import Join from './components/Join/Join';
 import Chat from './components/Chat/Chat';
 
@@ -15,7 +17,9 @@ import Chat from './components/Chat/Chat';
 //haverão paramêtros nela, como o nome do usuário que varia.
 const App = () => (
     <Router>
-        <Route path="/" exact component={Join} />
+        <Route path="/" exact component={Init} />
+        <Route path="/cadastro" component={Cadastro} />
+        <Route path="/join" component={Join} />
         <Route path="/chat" component={Chat} />
     </Router>
 );

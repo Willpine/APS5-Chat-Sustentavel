@@ -12,7 +12,7 @@ html, body {
     box-sizing: border-box;
   } 
   
-  .joinOuterContainer {
+  .InitOuterContainer {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -21,14 +21,8 @@ html, body {
     background-color: #1A1A1D;
   }
   
-  .joinInnerContainer {
+  .InitInnerContainer {
     width: 20%;
-  }
-  
-  .joinInput {
-    border-radius: 0;
-    padding: 15px 20px;
-    width: 100%;
   }
   
   .heading {
@@ -42,7 +36,7 @@ html, body {
       color: #fff !important;
       text-transform: uppercase;
       text-decoration: none;
-      background: #2979FF;
+      background: rgb(236, 0, 205);
       padding: 20px;
       border-radius: 5px;
       display: inline-block;
@@ -54,26 +48,12 @@ html, body {
   .mt-20 {
     margin-top: 20px;
   }
-  .salas{
-    color: black;
-    background-color: white;
-    cursor: pointer;
-  }
-  .salas > p{
-    margin:0;
-    padding: 10px;
-  }
-  .salas > p:hover{
-    color: white;
-    background-color: #1A1A1D;
-    transition: 0.2s;
-}
   @media (min-width: 320px) and (max-width: 480px) {
-    .joinOuterContainer {
+    .InitOuterContainer {
       height: 100%;
     }
   
-    .joinInnerContainer {
+    .InitInnerContainer {
       width: 90%;
     }
   

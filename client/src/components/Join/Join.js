@@ -2,7 +2,6 @@
 // baseados em funções, enquanto link, vai ligar Join ao caminho /Chat.
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-
 import './Join.css';
 
 const Join = () => {
@@ -14,7 +13,29 @@ const Join = () => {
     const [nome, setNome] = useState('');
     // TODO : mudar para público ao fim do tutorial.
     const [sala, setSala] = useState('');
-
+    function choice(id1) {
+        let id = id1;
+        let sala = ''
+        if (id == "um"){
+            document.querySelector("."+id).style.cssText ="background-color: #1A1A1D; color: white"
+            document.querySelector('.dois').style.cssText ="background-color: white; color: #1A1A1D"
+            document.querySelector('.tres').style.cssText ="background-color: white; color: #1A1A1D"
+            sala="Auditório"
+        }
+        else if (id == "dois"){
+            document.querySelector("."+id).style.cssText ="background-color: #1A1A1D; color: white"
+            document.querySelector('.um').style.cssText ="background-color: white; color: #1A1A1D"
+            document.querySelector('.tres').style.cssText ="background-color: white; color: #1A1A1D"
+            sala="Planetário"
+        }
+        else{
+            document.querySelector("."+id).style.cssText ="background-color: #1A1A1D; color: white"
+            document.querySelector('.um').style.cssText ="background-color: white; color: #1A1A1D"
+            document.querySelector('.dois').style.cssText ="background-color: white; color: #1A1A1D"
+            sala="Portões"
+        }
+        setSala(sala)
+    }
     return (
         // O código a seguir é JSX e não HTML, e representa o front.
         // mt-20 => margin-top=20
@@ -28,10 +49,18 @@ const Join = () => {
                 <div>
                     <input placeholder="Nome" className="joinInput"
                     type="text" onChange={(event) => setNome(event.target.value)} />
+                    <input placeholder="Senha" className="joinInput"
+                    type="password"/>
                 </div>
-                <div>
+                {/* <div>
                     <input placeholder="Sala" className="joinInput mt-20"
-                    type="text" onChange={(event) => setSala(event.target.value)} /></div>
+                    type="text" onChange={(event) => setSala(event.target.value)} />
+                </div> */}
+                <div className="salas mt-20">
+                    <p className="um" onClick={() => choice('um')}>Auditório</p>
+                    <p className="dois"onClick={() => choice('dois')}>Planetário</p>
+                    <p className="tres"onClick={() => choice('tres')}>Portões</p>
+                </div>
                 <Link onClick={event => (!nome || !sala) ? event.preventDefault() : null}
                 to={`/Chat?nome=${nome}&sala=${sala}`}>
                     <button className="button mt-20" type="submit">Entrar</button>
