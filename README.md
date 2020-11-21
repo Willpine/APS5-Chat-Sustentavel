@@ -1,12 +1,11 @@
-# chat-sustentavel
-WebApp de troca de mensagens - APS 5º SEMESTRE
+# APS5 - Chat Sustentavel
 
-1 - Instalem o npm em seus respectivos windows/mac/linux
-2 - clonem o projeto
-3 - No console, naveguem até chat-ambiental/client e executem:
-npm install --save
-(Esse demora msm)
-4 - aí, naveguem até chat-ambiental/server e executem:
-npm install --save
-5 - abrir dois consoles, um em /client e outro em /server
-6 - Executar "npm start" em ambos
+## Proposta
+
+Aplicativo Web de troca de mensagens.
+
+Usuários podem Criar salas ou juntar-se em salas existentes para trocarem mensagens, fotos e arquivos entre si.
+
+## Propósito
+
+Este projeto foi criado para avaliação na disciplina Atividades Práticas de Supervisio pelos alunos de Ciência da Computação - 5º Semestre da Universidade Paulista.
